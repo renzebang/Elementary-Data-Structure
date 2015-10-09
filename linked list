@@ -1,0 +1,75 @@
+// A complete working C program to demonstrate all insertion methods
+#include <stdio.h>
+#include <stdlib.h>
+
+// A linked list node
+struct node
+{
+	int data;
+	node *next;
+};
+
+node *find_node(node **head, int data)//use pointer to pointer to get rid of changing the original list when manipulate tmp
+{
+	node* tmp = (struct node*) malloc(sizeof(struct node));
+	for (tmp = *head; tmp != NULL; tmp = tmp->next)
+	{
+		if (tmp->data == data)
+		{
+			return tmp;
+		}
+	}
+	printf("No such element!\n");
+	return NULL;
+
+}
+void insert_after(node *aim_node, int data)
+{
+	node* tmp = (struct node*) malloc(sizeof(struct node));
+	tmp->data = data;
+	tmp->next = aim_node->next;
+	aim_node->next = tmp;
+
+}
+void delet_after(node *aim_node)
+{
+	node* tmp = (struct node*) malloc(sizeof(struct node));
+	tmp = aim_node->next;
+	aim_node->next = tmp->next;
+	free(tmp);
+
+
+
+
+}
+void append(node **head, int data)
+{
+	node* tmp = (struct node*) malloc(sizeof(struct node));
+	node *tmp2 = (struct node*) malloc(sizeof(struct node));
+	for (tmp = *head; tmp->next != NULL; tmp = tmp->next)
+	{
+
+	}
+
+	tmp2->data = data;
+	tmp2->next = NULL;
+	tmp->next = tmp2;
+
+
+}
+void push(node **head, int data)
+{
+	node* tmp = (struct node*) malloc(sizeof(struct node));
+	tmp->data = data;
+	tmp->next = *head;
+	*head = tmp;
+}
+
+void print(node *head)
+{
+	node *tmp = (struct node*) malloc(sizeof(struct node));
+	for (tmp = head; tmp != NULL; tmp = tmp->next)
+		printf("%d\n", tmp->data);
+
+
+}
